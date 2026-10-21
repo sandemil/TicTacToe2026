@@ -7,6 +7,7 @@ namespace TicTacToe
 
         public void Run()
         {
+            Console.WriteLine();
             Console.WriteLine("=========================");
             Console.WriteLine("       TIC-TAC-TOE");
             Console.WriteLine("=========================");
@@ -113,18 +114,22 @@ namespace TicTacToe
         //   - tills användaren avslutar spelet
         private ITournamentEndCondition AskEndCondition()
         {
-            Menu<Func<ITournamentEndCondition>> menu =
-                new Menu<Func<ITournamentEndCondition>>(
-                    "Choose tournament type:");
-            menu.Add("Best of X",
-                () => new BestOfX(AskNumber("Best of how many rounds?")));
-            menu.Add("First to X",
-                () => new FirstToX(AskNumber("First to how many wins?")));
-            menu.Add("Until you quit",
-                () => new UntilPlayerQuits());
+            Menu<string> menu = new Menu<string>("Choose tournament type:");
+            menu.Add("Best of X", "best");
+            menu.Add("First to X", "first");
+            menu.Add("Until you quit", "quit");
 
-            Func<ITournamentEndCondition> create = menu.Ask();
-            return create();
+            string choice = menu.Ask();
+
+            switch (choice)
+            {
+                case "best":
+                    return new BestOfX(AskNumber("Best of how many rounds?"));
+                case "first":
+                    return new FirstToX(AskNumber("First to how many wins?"));
+                default:
+                    return new UntilPlayerQuits();
+            }
         }
 
         private int AskNumber(string question)
