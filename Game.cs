@@ -82,14 +82,30 @@ namespace TicTacToe
         private StartingPlayerRule AskStartingRule()
         {
             Menu<StartingPlayerRule> menu =
-                new Menu<StartingPlayerRule>("Who starts?");
-            menu.Add("You", (round, human, computer) => human);
-            menu.Add("Computer", (round, human, computer) => computer);
-            menu.Add(
-                "Alternate each round",
-                (round, human, computer) =>
-                    round % 2 == 1 ? human : computer);
+                new Menu<StartingPlayerRule>("Who starts each round?");
+            menu.Add("Player always starts", PlayerStarts);
+            menu.Add("Computer always starts", ComputerStarts);
+            menu.Add("Take turns", TakeTurns);
             return menu.Ask();
+        }
+
+        private IPlayer PlayerStarts(int round, IPlayer human, IPlayer computer)
+        {
+            return human;
+        }
+
+        private IPlayer ComputerStarts(int round, IPlayer human, IPlayer computer)
+        {
+            return computer;
+        }
+
+        private IPlayer TakeTurns(int round, IPlayer human, IPlayer computer)
+        {
+            if (round % 2 == 1)
+            {
+                return human;
+            }
+            return computer;
         }
 
         // Rätt fabrik ska returneras baserat på spelarens val
