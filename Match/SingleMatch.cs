@@ -4,19 +4,15 @@ namespace TicTacToe
     public class SingleMatch : IMatch
     {
         private readonly MatchSettings settings;
-        private readonly GameHistory<MoveRecord> moves;
 
-        public SingleMatch(
-            MatchSettings settings,
-            GameHistory<MoveRecord> moves)
+        public SingleMatch(MatchSettings settings)
         {
             this.settings = settings;
-            this.moves = moves;
         }
 
         public void Play()
         {
-            Round round = new Round(settings, moves, 1);
+            Round round = new Round(settings, 1);
             string winner = round.Play();
 
             if (winner == "Draw")
@@ -33,10 +29,6 @@ namespace TicTacToe
                 settings.Difficulty,
                 settings.Mode.Name,
                 "Single match"));
-
-            Console.WriteLine();
-            Console.WriteLine("Moves this match:");
-            moves.Print();
         }
     }
 }

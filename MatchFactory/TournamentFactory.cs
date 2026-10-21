@@ -1,6 +1,6 @@
 namespace TicTacToe
 {
-    // Skapar en Tournament med nytt MoveRecord, samt det valda end conditionet
+    // Skapar en Tournament med det valda end conditionet
     public class TournamentFactory : IMatchFactory
     {
         private readonly MatchSettings settings;
@@ -16,8 +16,7 @@ namespace TicTacToe
 
         public IMatch Create()
         {
-            GameHistory<MoveRecord> moves = new GameHistory<MoveRecord>();
-            return new Tournament(settings, moves, endCondition);
+            return new Tournament(settings, endCondition);
         }
     }
 }

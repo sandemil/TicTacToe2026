@@ -2,13 +2,21 @@ namespace TicTacToe
 {
     public class HumanPlayer : IPlayer
     {
+        private readonly IBoardStyle style;
+        private readonly IRestorePoint restorePoint;
+
         public char Symbol { get; }
         public string Name { get; }
 
-        public HumanPlayer(char symbol)
+        public HumanPlayer(
+            char symbol,
+            IBoardStyle style,
+            IRestorePoint restorePoint)
         {
             Symbol = symbol;
             Name = "Player";
+            this.style = style;
+            this.restorePoint = restorePoint;
         }
 
         public int ChooseMove(Board board, IGameMode mode)
@@ -17,6 +25,21 @@ namespace TicTacToe
             {
                 Console.Write("Choose position (1-9): ");
                 string? input = Console.ReadLine();
+
+                if (input == "s")
+                {
+                    restorePoint.Save(board);
+                    continue;
+                }
+
+                if (input == "l")
+                {
+                    if (restorePoint.Load(board))
+                    {
+                        style.Render(board);
+                    }
+                    continue;
+                }
 
                 int position;
                 if (!int.TryParse(input, out position))

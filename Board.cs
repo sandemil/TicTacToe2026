@@ -5,6 +5,8 @@ namespace TicTacToe
     public class Board : IEnumerable<char>
     {
         private readonly char[] cells;
+        private readonly GameHistory<MoveRecord> moves =
+            new GameHistory<MoveRecord>();
 
         public Board()
         {
@@ -15,6 +17,12 @@ namespace TicTacToe
             }
         }
 
+        // Dragen som spelats på brädet, i ordning. Används för att spara ställningen och för att bygga upp den igen
+        public GameHistory<MoveRecord> Moves
+        {
+            get { return moves; }
+        }
+
         public bool IsEmpty(int position)
         {
             return cells[position - 1] == ' ';
@@ -23,6 +31,29 @@ namespace TicTacToe
         public void Place(int position, char symbol)
         {
             cells[position - 1] = symbol;
+        }
+
+        // Ett riktigt drag, som sparas i historiken. AI:n använder Place och Clear direkt när den bara testar ett drag
+        public void Play(int position, char symbol)
+        {
+            Place(position, symbol);
+            moves.Add(new MoveRecord(symbol, position));
+        }
+
+        // Tömmer brädet och spelar upp de sparade dragen igen
+        public void Restore(GameHistory<MoveRecord> saved)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                cells[i] = ' ';
+            }
+            moves.Clear();
+
+            for (int i = 0; i < saved.Count; i++)
+            {
+                MoveRecord move = saved.Get(i);
+                Play(move.Position, move.Symbol);
+            }
         }
 
         public void Clear(int position)

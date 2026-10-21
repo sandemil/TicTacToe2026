@@ -1,6 +1,6 @@
 namespace TicTacToe
 {
-    // Skapar en SingleMatch med nytt MoveRecord
+    // Skapar en SingleMatch
     public class SingleMatchFactory : IMatchFactory
     {
         private readonly MatchSettings settings;
@@ -12,8 +12,7 @@ namespace TicTacToe
 
         public IMatch Create()
         {
-            GameHistory<MoveRecord> moves = new GameHistory<MoveRecord>();
-            return new SingleMatch(settings, moves);
+            return new SingleMatch(settings);
         }
     }
 }

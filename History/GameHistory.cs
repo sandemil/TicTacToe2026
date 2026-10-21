@@ -22,6 +22,11 @@ namespace TicTacToe
             items.Add(item);
         }
 
+        public void Clear()
+        {
+            items.Clear();
+        }
+
         public T Get(int index)
         {
             return items[index];

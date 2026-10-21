@@ -4,16 +4,13 @@ namespace TicTacToe
     public class Tournament : IMatch
     {
         private readonly MatchSettings settings;
-        private readonly GameHistory<MoveRecord> moves;
         private readonly ITournamentEndCondition endCondition;
 
         public Tournament(
             MatchSettings settings,
-            GameHistory<MoveRecord> moves,
             ITournamentEndCondition endCondition)
         {
             this.settings = settings;
-            this.moves = moves;
             this.endCondition = endCondition;
         }
 
@@ -30,7 +27,7 @@ namespace TicTacToe
                 Console.WriteLine("Round " + roundsPlayed);
                 PrintScore("Score", humanWins, computerWins);
 
-                Round round = new Round(settings, moves, roundsPlayed);
+                Round round = new Round(settings, roundsPlayed);
                 string winner = round.Play();
                 if (winner == settings.Human.Name)
                 {
@@ -70,10 +67,6 @@ namespace TicTacToe
                 settings.Difficulty,
                 settings.Mode.Name,
                 endCondition.Name));
-
-            Console.WriteLine();
-            Console.WriteLine("Moves this tournament:");
-            moves.Print();
         }
 
         // Skriver ut ställningen

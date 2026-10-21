@@ -5,16 +5,11 @@ namespace TicTacToe
     public class Round
     {
         private readonly MatchSettings settings;
-        private readonly GameHistory<MoveRecord> moves;
         private readonly int number;
 
-        public Round(
-            MatchSettings settings,
-            GameHistory<MoveRecord> moves,
-            int number)
+        public Round(MatchSettings settings, int number)
         {
             this.settings = settings;
-            this.moves = moves;
             this.number = number;
         }
 
@@ -34,8 +29,7 @@ namespace TicTacToe
             {
                 settings.Style.Render(board);
                 int move = current.ChooseMove(board, settings.Mode);
-                board.Place(move, current.Symbol);
-                moves.Add(new MoveRecord(current.Symbol, move));
+                board.Play(move, current.Symbol);
 
                 char winnerSymbol = settings.Mode.GetWinningSymbol(board);
                 if (winnerSymbol != ' ')

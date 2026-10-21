@@ -24,15 +24,19 @@ namespace TicTacToe
             Console.WriteLine("Thank you for playing. Goodbye!");
         }
 
-        // Frågar om inställningar, skapar spelarna och settings, samt låter MatchHost köra matcherna
+        // Frågar om inställningar, skapar spelarna och settings, samt låter SessionHost köra matcherna
         private void PlaySession()
         {
             IBoardStyle style = AskBoardStyle();
             IGameMode mode = AskGameMode();
             IAiStrategy strategy = AskStrategy();
             StartingPlayerRule startingRule = AskStartingRule();
+            ISessionFactory sessionFactory = AskSessionType();
 
-            IPlayer human = new HumanPlayer('X');
+            IPlayer human = new HumanPlayer(
+                'X',
+                style,
+                sessionFactory.CreateRestorePoint());
             IPlayer computer = new ComputerPlayer('O', strategy);
 
             MatchSettings settings = new MatchSettings(
@@ -44,9 +48,7 @@ namespace TicTacToe
                 strategy.Name,
                 startingRule);
 
-            IMatchFactory factory = AskMatchFactory(settings);
-
-            MatchHost host = new MatchHost(factory);
+            SessionHost host = sessionFactory.CreateHost(settings);
             host.Run();
             PrintMatchHistory();
         }
@@ -109,60 +111,17 @@ namespace TicTacToe
         }
 
         // Rätt fabrik ska returneras baserat på spelarens val
-        private IMatchFactory AskMatchFactory(MatchSettings settings)
+        private ISessionFactory AskSessionType()
         {
-            Menu<bool> menu = new Menu<bool>("Choose match type:");
-            menu.Add("Single match", false);
-            menu.Add("Tournament", true);
-
-            // Om användaren kör SingleMatch
-            if (!menu.Ask())
-            {
-                return new SingleMatchFactory(settings);
-            }
-
-            // Om användaren kör Tournament
-            ITournamentEndCondition condition = AskEndCondition();
-            return new TournamentFactory(settings, condition);
-        }
-
-        // Användaren väljer vilket end condition som ska gälla: 
-        //   - best of x 
-        //   - first to x
-        //   - tills användaren avslutar spelet
-        private ITournamentEndCondition AskEndCondition()
-        {
-            Menu<string> menu = new Menu<string>("Choose tournament type:");
-            menu.Add("Best of X", "best");
-            menu.Add("First to X", "first");
-            menu.Add("Until you quit", "quit");
-
-            string choice = menu.Ask();
-
-            switch (choice)
-            {
-                case "best":
-                    return new BestOfX(AskNumber("Best of how many rounds?"));
-                case "first":
-                    return new FirstToX(AskNumber("First to how many wins?"));
-                default:
-                    return new UntilPlayerQuits();
-            }
-        }
-
-        private int AskNumber(string question)
-        {
-            while (true)
-            {
-                Console.Write(question + " ");
-                int number;
-                if (int.TryParse(Console.ReadLine(), out number) && number >= 1)
-                {
-                    return number;
-                }
-
-                Console.WriteLine("Please enter a number of at least 1.");
-            }
+            Menu<ISessionFactory> menu =
+                new Menu<ISessionFactory>("Choose match type:");
+            menu.Add(
+                "Single match (practice: s = save, l = load)",
+                new SingleSessionFactory());
+            menu.Add(
+                "Tournament (several rounds, no save or load)",
+                new TournamentSessionFactory());
+            return menu.Ask();
         }
 
         private void PrintMatchHistory()
