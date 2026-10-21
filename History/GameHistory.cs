@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace TicTacToe
 {
     //          FALL #1:
-    // VAD:     Generics, en egen generisk typ med ett constraint.
+    // VAD:     Generics
     // HUR:     GameHistory<T> används som GameHistory<MoveRecord> för
     //          dragen i en match och som GameHistory<MatchResult> för
     //          alla matcher. Constraintet where T : IGameRecord behövs

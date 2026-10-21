@@ -84,13 +84,6 @@ namespace TicTacToe
             return ' ';
         }
 
-        //          FALL #8:
-        // VAD:     Iterator, Board implementerar IEnumerable<char>.
-        // HUR:     GetEnumerator() lämnar vidare cells egen enumerator,
-        //          och renderarna går igenom brädet med foreach.
-        // VARFÖR:  Renderarna behöver inte veta hur brädet lagras
-        //          eller räkna ut positioner, och de kan bara läsa
-        //          rutorna, inte ändra dem.
         public IEnumerator<char> GetEnumerator()
         {
             return ((IEnumerable<char>)cells).GetEnumerator();

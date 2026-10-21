@@ -1,5 +1,6 @@
 namespace TicTacToe
 {
+    // Returnerar samtliga drag i en runda som text
     public class MoveRecord : IGameRecord
     {
         public char Symbol { get; }

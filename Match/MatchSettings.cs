@@ -1,7 +1,7 @@
 namespace TicTacToe
 {
     // Samlar allt som väljs i menyerna så att det kan skickas
-    // runt som ett objekt i stället för många parametrar.
+    // runt som ett objekt i stället för många parametrar
     public class MatchSettings
     {
         public IPlayer Human { get; }

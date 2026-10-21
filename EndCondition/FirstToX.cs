@@ -14,6 +14,7 @@ namespace TicTacToe
             get { return "First to " + wins; }
         }
 
+        // returnerar true när någon nått x i "first to x"
         public bool IsFinished(int humanWins, int computerWins, int roundsPlayed)
         {
             return humanWins >= wins || computerWins >= wins;

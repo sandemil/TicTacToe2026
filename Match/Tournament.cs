@@ -78,6 +78,7 @@ namespace TicTacToe
             moves.Print();
         }
 
+        // Skriver ut ställningen
         private void PrintScore(string label, int humanWins, int computerWins)
         {
             Console.WriteLine(label

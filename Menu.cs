@@ -3,14 +3,6 @@ using System.Collections.Generic;
 
 namespace TicTacToe
 {
-    //          FALL #6:
-    // VAD:     Generics, en egen generisk typ.
-    // HUR:     Menu<T> visar numrerade alternativ och returnerar det
-    //          värde som hör till valet. Game använder den med fem
-    //          typargument: IBoardRenderer, GameMode, IAiStrategy,
-    //          StartingPlayerRule och MatchFactory.
-    // VARFÖR:  En klass ersätter fyra nästan identiska menymetoder,
-    //          och Ask() returnerar rätt typ direkt utan casting.
     public class Menu<T>
     {
         private readonly string title;
@@ -28,6 +20,7 @@ namespace TicTacToe
             values.Add(value);
         }
 
+        // Visar alternativen och returnerar det som användaren väljer
         public T Ask()
         {
             while (true)

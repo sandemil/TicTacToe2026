@@ -16,6 +16,7 @@ namespace TicTacToe
             get { return "Best of " + rounds; }
         }
 
+        // när alla x rundor är spelade, eller när ledningen är för stor
         public bool IsFinished(int humanWins, int computerWins, int roundsPlayed)
         {
             int roundsLeft = rounds - roundsPlayed;

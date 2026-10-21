@@ -1,5 +1,6 @@
 namespace TicTacToe
 {
+    // Olika end conditions beroende på vad spelaren väljer
     public interface ITournamentEndCondition
     {
         string Name { get; }

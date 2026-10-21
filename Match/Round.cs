@@ -3,7 +3,7 @@ using System;
 namespace TicTacToe
 {
     // Spelar en runda på ett nytt bräde och returnerar vinnarens
-    // namn, eller "Draw" om det blir oavgjort.
+    // namn, eller "Draw" om det blir oavgjort
     public class Round
     {
         private readonly MatchSettings settings;

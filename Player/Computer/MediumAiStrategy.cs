@@ -12,6 +12,7 @@ namespace TicTacToe
             get { return "Medium"; }
         }
 
+        // Om möjligt vinner den, annars blockerar den och väljer i sista hand ett säkert drag
         public int ChooseMove(Board board, IGameMode mode, char symbol)
         {
             char opponent = GetOpponent(symbol);
@@ -42,8 +43,7 @@ namespace TicTacToe
             return 'X';
         }
 
-        // Returnerar ett drag som gör att symbol vinner direkt,
-        // eller -1 om det inte finns något.
+        // Testar varje ledig ruta och returnerar den som ger vinst om möjligt
         private int FindWinningMove(
             Board board,
             IGameMode mode,
@@ -64,8 +64,7 @@ namespace TicTacToe
             return -1;
         }
 
-        // Returnerar alla drag som inte gör att motståndaren vinner.
-        // Om alla drag förlorar returneras alla tomma rutor.
+        // Returnerar de lediga rutor som inte ger motståndaren en vinst
         private List<int> FindSafeMoves(
             Board board,
             IGameMode mode,

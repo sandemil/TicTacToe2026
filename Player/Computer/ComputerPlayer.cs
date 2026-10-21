@@ -16,6 +16,7 @@ namespace TicTacToe
             this.strategy = strategy;
         }
 
+        // Låter AI välja drag baserat på vald svårighetsgrad
         public int ChooseMove(Board board, IGameMode mode)
         {
             int move = strategy.ChooseMove(board, mode, Symbol);

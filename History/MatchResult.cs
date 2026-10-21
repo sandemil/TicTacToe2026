@@ -1,5 +1,6 @@
 namespace TicTacToe
 {
+    // Returnerar vinnare, svårighetsgrad, spelläge och matchtyp
     public class MatchResult : IGameRecord
     {
         public string Winner { get; }

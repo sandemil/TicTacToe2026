@@ -1,5 +1,6 @@
 namespace TicTacToe
 {
+    // Skapar en SingleMatch med nytt MoveRecord
     public class SingleMatchFactory : IMatchFactory
     {
         private readonly MatchSettings settings;

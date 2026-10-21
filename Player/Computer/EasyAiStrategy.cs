@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace TicTacToe
 {
+    //  Easy väljer en slumpad ledig position
     public class EasyAiStrategy : IAiStrategy
     {
         private readonly Random random = new Random();

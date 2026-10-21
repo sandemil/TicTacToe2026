@@ -5,6 +5,7 @@ namespace TicTacToe
         char Symbol { get; }
         string Name { get; }
 
+        // Nästa drag
         int ChooseMove(Board board, IGameMode mode);
     }
 }
