@@ -1,5 +1,3 @@
-using System;
-
 namespace TicTacToe
 {
     // En match med endast en runda

@@ -1,5 +1,3 @@
-using System;
-
 namespace TicTacToe
 {
     // Spelar en runda på ett nytt bräde och returnerar vinnarens

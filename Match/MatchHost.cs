@@ -1,5 +1,3 @@
-using System;
-
 namespace TicTacToe
 {
     // Kör matcher med samma inställningar tills spelaren inte vill

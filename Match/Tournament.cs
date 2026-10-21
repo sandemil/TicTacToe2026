@@ -1,5 +1,3 @@
-using System;
-
 namespace TicTacToe
 {
     // Spelar rundor tills end condition säger att turneringen är slut

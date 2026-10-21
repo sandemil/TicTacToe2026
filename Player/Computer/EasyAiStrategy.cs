@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace TicTacToe
 {
     //  Easy väljer en slumpad ledig position
