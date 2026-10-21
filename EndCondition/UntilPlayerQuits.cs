@@ -12,7 +12,7 @@ namespace TicTacToe
         {
             while (true)
             {
-                Console.Write("Play another round? (y/n): ");
+                Console.Write("Play another round in this tournament? (y/n): ");
                 string? answer = Console.ReadLine();
                 if (answer == null)
                 {
