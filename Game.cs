@@ -99,11 +99,13 @@ namespace TicTacToe
             menu.Add("Single match", false);
             menu.Add("Tournament", true);
 
+            // Om användaren kör SingleMatch
             if (!menu.Ask())
             {
                 return new SingleMatchFactory(settings);
             }
 
+            // Om användaren kör Tournament
             ITournamentEndCondition condition = AskEndCondition();
             return new TournamentFactory(settings, condition);
         }
