@@ -1,3 +1,5 @@
+// AI-genrererad kod
+    
 namespace TicTacToe
 {
     // Fungerar som Medium, fast AI:n föredrar mittenrutan och därefter hörnen

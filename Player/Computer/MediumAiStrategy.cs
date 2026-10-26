@@ -1,3 +1,5 @@
+// AI-genererad kod
+
 namespace TicTacToe
 {
     public class MediumAiStrategy : IAiStrategy
