@@ -2,14 +2,14 @@ using System.Collections;
 
 namespace TicTacToe
 {
-    //          FALL #10:
-    // VAD:     Iterator pattern (IEnumerable och IEnumerator)
-    // HUR:     Board implementerar IEnumerable<char>, vilket gör att NumberedBoard
-    //          och MinimalBoard ka gå igenom cellerna trots att de är privata genom att anropa
-    //          GetEnumerator() på arrayen "cells". De kan då gå igenom brädet med foreach.
-    // VARFÖR:  Brädstilarna kan läsa rutorna utan att arrayen "cells" behöver vara public.
-    //          Bara Board kan ändra rutorna, via Place(), Play() och Clear(), så reglerna
-    //          för brädet kan inte brytas av olika boards.
+    // HUR:     Board implementerar IEnumerable<char> genom att anropa
+    //          GetEnumerator() på den privata arrayen cells.
+    //          NumberedBoard och MinimalBoard går igenom brädet med
+    //          foreach (char mark in board).
+    // VARFÖR:  Brädstilarna kan läsa rutorna i ordning utan att arrayen
+    //          görs public, så de kan inte skriva direkt i den. Board
+    //          kan byta intern lagring (t.ex. till char[3,3]) utan att
+    //          brädstilarna behöver ändras.
     public class Board : IEnumerable<char>
     {
         private readonly char[] cells;
