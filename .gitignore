@@ -485,3 +485,6 @@ $RECYCLE.BIN/
 
 # Sparat spel
 savegame.txt
+
+# .vscode
+.vscode
