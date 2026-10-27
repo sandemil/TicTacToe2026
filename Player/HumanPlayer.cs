@@ -4,6 +4,7 @@ namespace TicTacToe
     {
         private readonly IBoardStyle style;
         private readonly IRestorePoint restorePoint;
+        private readonly PositionReader reader = new PositionReader();
 
         public char Symbol { get; }
         public string Name { get; }
@@ -27,7 +28,7 @@ namespace TicTacToe
                 string? input = Console.ReadLine();
 
                 if (input == "s")
-                {   
+                {
                 //          FALL #7:
                 // VAD:     Strategy pattern
                 // HUR:     FileRestorePoint och NoRestorePoint
@@ -41,39 +42,19 @@ namespace TicTacToe
                 //          en if-sats här i HumanPlayer).
 
                     restorePoint.Save(board);
-                    continue;
                 }
-
-                if (input == "l")
+                else if (input == "l" && restorePoint.Load(board))
                 {
-                    if (restorePoint.Load(board))
+                    style.Render(board);
+                }
+                else if (input != "l")
+                {
+                    int position = reader.Parse(input, board);
+                    if (position != -1)
                     {
-                        style.Render(board);
+                        return position;
                     }
-                    continue;
                 }
-
-                int position;
-                if (!int.TryParse(input, out position))
-                {
-                    Console.WriteLine(
-                        "Invalid input. Enter a number between 1 and 9.");
-                    continue;
-                }
-
-                if (position < 1 || position > 9)
-                {
-                    Console.WriteLine("Invalid position. Try again.");
-                    continue;
-                }
-
-                if (!board.IsEmpty(position))
-                {
-                    Console.WriteLine("That position is already occupied.");
-                    continue;
-                }
-
-                return position;
             }
         }
     }

@@ -8,7 +8,8 @@ namespace TicTacToe
         }
 
         // frågar spelaren om en till runda, om nej så returneras true
-        public bool IsFinished(int humanWins, int computerWins, int roundsPlayed)
+        public bool IsFinished(
+            int humanWins, int computerWins, int roundsPlayed)
         {
             while (true)
             {

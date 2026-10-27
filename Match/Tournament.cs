@@ -16,73 +16,20 @@ namespace TicTacToe
 
         public void Play()
         {
-            int humanWins = 0;
-            int computerWins = 0;
-            int roundsPlayed = 0;
-
-            //          FALL #6:
-            // VAD:     Strategy pattern
-            // HUR:     BestOfX, FirstToX och UntilPlayerQuits injiceras som
-            //          ITournamentEndCondition i Tournament. Efter varje runda
-            //          anropas IsFinished() för att avgöra om tournamentet är slut.
-            // VARFÖR:  Tournament innehåller bara loopen och poängräkningen,
-            //          inte reglerna för när den ska sluta. En ny turneringstyp
-            //          kan läggas till utan att Tournament ändras.
+            Scoreboard score = new Scoreboard(settings);
             do
             {
-                roundsPlayed++;
-                Console.WriteLine();
-                Console.WriteLine("Round " + roundsPlayed);
-                PrintScore("Score", humanWins, computerWins);
+                Round round = new Round(settings, score.StartRound());
+                score.Record(round.Play());
+            }
+            while (!score.IsFinished(endCondition));
 
-                Round round = new Round(settings, roundsPlayed);
-                string winner = round.Play();
-                if (winner == settings.Human.Name)
-                {
-                    humanWins++;
-                }
-                else if (winner == settings.Computer.Name)
-                {
-                    computerWins++;
-                }
-            }
-            while (!endCondition.IsFinished(
-                humanWins, computerWins, roundsPlayed));
-
-            string matchWinner = "Draw";
-            if (humanWins > computerWins)
-            {
-                matchWinner = settings.Human.Name;
-            }
-            else if (computerWins > humanWins)
-            {
-                matchWinner = settings.Computer.Name;
-            }
-
-            Console.WriteLine();
-            PrintScore("Final score", humanWins, computerWins);
-            if (matchWinner == "Draw")
-            {
-                Console.WriteLine("The tournament ended in a draw.");
-            }
-            else
-            {
-                Console.WriteLine(matchWinner + " wins the tournament!");
-            }
-
+            score.PrintResult();
             settings.Results.Add(new MatchResult(
-                matchWinner,
+                score.GetWinner(),
                 settings.Difficulty,
                 settings.Mode.Name,
                 endCondition.Name));
-        }
-
-        // Skriver ut ställningen
-        private void PrintScore(string label, int humanWins, int computerWins)
-        {
-            Console.WriteLine(label
-                + ": Player " + humanWins
-                + " - Computer " + computerWins);
         }
     }
 }

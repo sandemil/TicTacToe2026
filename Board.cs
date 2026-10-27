@@ -19,10 +19,7 @@ namespace TicTacToe
         public Board()
         {
             cells = new char[9];
-            for (int i = 0; i < 9; i++)
-            {
-                cells[i] = ' ';
-            }
+            Array.Fill(cells, ' ');
         }
 
         // Dragen som spelats på brädet, i ordning. 
@@ -42,7 +39,8 @@ namespace TicTacToe
             cells[position - 1] = symbol;
         }
 
-        // Ett riktigt drag, som sparas i historiken. AI:n använder Place och Clear direkt när den bara testar ett drag
+        // Ett riktigt drag, som sparas i historiken. 
+        // AI:n använder Place och Clear direkt när den bara testar ett drag
         public void Play(int position, char symbol)
         {
             Place(position, symbol);
@@ -52,10 +50,7 @@ namespace TicTacToe
         // Tömmer brädet och spelar upp de sparade dragen igen
         public void Restore(GameHistory<MoveRecord> saved)
         {
-            for (int i = 0; i < 9; i++)
-            {
-                cells[i] = ' ';
-            }
+            Array.Fill(cells, ' ');
             moves.Clear();
 
             for (int i = 0; i < saved.Count; i++)

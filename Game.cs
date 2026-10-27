@@ -24,7 +24,8 @@ namespace TicTacToe
             Console.WriteLine("Thank you for playing. Goodbye!");
         }
 
-        // Frågar om inställningar, skapar spelarna och settings, samt låter SessionHost köra matcherna
+        // Frågar om inställningar, skapar spelarna och settings, 
+        // samt låter SessionHost köra matcherna
         private void PlaySession()
         {
             IBoardStyle style = AskBoardStyle();
@@ -53,7 +54,8 @@ namespace TicTacToe
             PrintMatchHistory();
         }
 
-        // Underliggande metoder använder sig av Menu<T> när de frågar om de olika inställningarna.
+        // Underliggande metoder använder sig av Menu<T> 
+        // när de frågar om de olika inställningarna.
         private IBoardStyle AskBoardStyle()
         {
             Menu<IBoardStyle> menu =
@@ -91,17 +93,20 @@ namespace TicTacToe
             return menu.Ask();
         }
 
-        private IPlayer PlayerStarts(int round, IPlayer human, IPlayer computer)
+        private IPlayer PlayerStarts(
+            int round, IPlayer human, IPlayer computer)
         {
             return human;
         }
 
-        private IPlayer ComputerStarts(int round, IPlayer human, IPlayer computer)
+        private IPlayer ComputerStarts(
+            int round, IPlayer human, IPlayer computer)
         {
             return computer;
         }
 
-        private IPlayer TakeTurns(int round, IPlayer human, IPlayer computer)
+        private IPlayer TakeTurns(
+            int round, IPlayer human, IPlayer computer)
         {
             if (round % 2 == 1)
             {

@@ -11,7 +11,8 @@ namespace TicTacToe
             get { return "Medium"; }
         }
 
-        // Om möjligt vinner den, annars blockerar den och väljer i sista hand ett säkert drag
+        // Om möjligt vinner den, annars blockerar den 
+        // och väljer i sista hand ett säkert drag
         public int ChooseMove(Board board, IGameMode mode, char symbol)
         {
             char opponent = GetOpponent(symbol);

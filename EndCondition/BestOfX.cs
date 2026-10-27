@@ -15,7 +15,8 @@ namespace TicTacToe
         }
 
         // när alla x rundor är spelade, eller när ledningen är för stor
-        public bool IsFinished(int humanWins, int computerWins, int roundsPlayed)
+        public bool IsFinished(
+            int humanWins, int computerWins, int roundsPlayed)
         {
             int roundsLeft = rounds - roundsPlayed;
             int lead = Math.Abs(humanWins - computerWins);

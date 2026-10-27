@@ -7,7 +7,8 @@ namespace TicTacToe
             get { return "Reverse"; }
         }
 
-        // Kollar hela tiden om någon har fått tre i rad. Om ja, returnera den andra spelarens char
+        // Kollar hela tiden om någon har fått tre i rad. 
+        // Om ja, returnera den andra spelarens char
         public char GetWinningSymbol(Board board)
         {
             char lined = board.GetWinner();
