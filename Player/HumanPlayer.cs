@@ -27,7 +27,19 @@ namespace TicTacToe
                 string? input = Console.ReadLine();
 
                 if (input == "s")
-                {
+                {   
+                //          FALL #7:
+                // VAD:     Strategy pattern
+                // HUR:     FileRestorePoint och NoRestorePoint
+                //          injiceras som IRestorePoint i HumanPlayer.
+                //          Save() och Load() anropas när spelaren
+                //          skriver s eller l.
+                // VARFÖR:  HumanPlayer behöver inte veta om det
+                //          är en singelmatch eller turnering. Regeln
+                //          att sparning inte får ske i turneringar
+                //          ligger i NoRestorePoint (i stället för i
+                //          en if-sats här i HumanPlayer).
+
                     restorePoint.Save(board);
                     continue;
                 }

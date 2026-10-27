@@ -17,6 +17,16 @@ namespace TicTacToe
             bool rematch = true;
             while (rematch)
             {
+                //          FALL #9:
+                // VAD:     Factory Method pattern.
+                // HUR:     SingleMatchFactory och TournamentFactory injiceras
+                //          som IMatchFactory i SessionHost. Create() returnerar
+                //          en ny SingleMatch eller Tournament som IMatch.
+                // VARFÖR:  Varje revansch behöver en ny match, men
+                //          SessionHost vet inte vilken sort. Fabriken har
+                //          inställningar och end condition, så SessionHost
+                //          kan skapa matcher utan att känna till dem.
+
                 IMatch match = factory.Create();
                 match.Play();
                 rematch = AskRematch();

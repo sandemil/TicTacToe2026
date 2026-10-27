@@ -20,6 +20,14 @@ namespace TicTacToe
             int computerWins = 0;
             int roundsPlayed = 0;
 
+            //          FALL #6:
+            // VAD:     Strategy pattern
+            // HUR:     BestOfX, FirstToX och UntilPlayerQuits injiceras som
+            //          ITournamentEndCondition i Tournament. Efter varje runda
+            //          anropas IsFinished() för att avgöra om tournamentet är slut.
+            // VARFÖR:  Tournament innehåller bara loopen och poängräkningen,
+            //          inte reglerna för när den ska sluta. En ny turneringstyp
+            //          kan läggas till utan att Tournament ändras.
             do
             {
                 roundsPlayed++;

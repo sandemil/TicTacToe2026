@@ -1,5 +1,13 @@
 namespace TicTacToe
 {
+    //          FALL #2:
+    // VAD:     Generics
+    // HUR:     Menu<T> kopplar varje menytext till ett värde av typen T och
+    //          Ask() returnerar värdet som spelaren väljer. Den används till
+    //          att välja t.ex. speltyp, svårighetsgrad och vem som börjar. 
+    // VARFÖR:  All logik för att visa alternativ och läsa in ett giltigt
+    //          val finns på ett ställe i stället för i varje meny. Ask()
+    //          returnerar T, så Game får rätt typ direkt utan att behöva casta.
     public class Menu<T>
     {
         private readonly string title;

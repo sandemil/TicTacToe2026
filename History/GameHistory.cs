@@ -1,13 +1,15 @@
 namespace TicTacToe
 {
     //          FALL #1:
-    // VAD:     Generics
-    // HUR:     GameHistory<T> används som GameHistory<MoveRecord> för
-    //          dragen i en match och som GameHistory<MatchResult> för
-    //          alla matcher. Constraintet where T : IGameRecord behövs
-    //          för att Print() ska kunna anropa Describe().
-    // VARFÖR:  En klass lagrar både drag och resultat. Get() returnerar
-    //          T, så Game kan läsa Winner från MatchResult utan casting.
+    // VAD:     Generics med constraint.
+    // HUR:     GameHistory<T> konstrueras som GameHistory<MatchResult> i Game
+    //          och som GameHistory<MoveRecord> i Board. Constrainten
+    //          T : IGameRecord behövs för att Print() ska kunna anropa
+    //          Describe().
+    // VARFÖR:  En och samma klass lagrar både matchresultat och drag, i
+    //          stället för två nästan likadana klasser. Get() returnerar T,
+    //          så typinformationen behålls: Game läser Winner och
+    //          FileRestorePoint läser Symbol och Position utan att behöva casta.
     public class GameHistory<T> where T : IGameRecord
     {
         private readonly List<T> items = new List<T>();
