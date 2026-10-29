@@ -2,7 +2,7 @@ using System.Collections;
 
 namespace TicTacToe
 {
-    //          FALL #10:
+    //          FALL #1:
     // VAD:     Iterator pattern (IEnumerable och IEnumerator)
     // HUR:     Board implementerar IEnumerable<char> genom att anropa
     //          GetEnumerator() på den privata arrayen cells.
