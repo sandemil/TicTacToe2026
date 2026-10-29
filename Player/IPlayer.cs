@@ -6,6 +6,6 @@ namespace TicTacToe
         string Name { get; }
 
         // Nästa drag
-        int ChooseMove(Board board, IGameMode mode);
+        int ChooseMove(Board board, IGameMode mode); // Fall #3
     }
 }

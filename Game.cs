@@ -12,7 +12,7 @@ namespace TicTacToe
             Console.WriteLine("       TIC-TAC-TOE");
             Console.WriteLine("=========================");
 
-            Menu<bool> mainMenu = new Menu<bool>("Main menu:");
+            Menu<bool> mainMenu = new Menu<bool>("Main menu:"); // FALL #2
             mainMenu.Add("Play", true);
             mainMenu.Add("Exit", false);
 
@@ -59,7 +59,7 @@ namespace TicTacToe
         private IBoardStyle AskBoardStyle()
         {
             Menu<IBoardStyle> menu =
-                new Menu<IBoardStyle>("Choose board style:");
+                new Menu<IBoardStyle>("Choose board style:"); // FALL #2
             menu.Add("Numbered", new NumberedBoard());
             menu.Add("Minimal", new MinimalBoard());
             return menu.Ask(); // returnerar en IBoardStyle
@@ -83,7 +83,7 @@ namespace TicTacToe
             return menu.Ask(); // returnerar en IAiStrategy
         }
 
-        private StartingPlayerRule AskStartingRule()
+        private StartingPlayerRule AskStartingRule() // FALL #8
         {
             Menu<StartingPlayerRule> menu =
                 new Menu<StartingPlayerRule>("Who starts each round?");
@@ -93,19 +93,19 @@ namespace TicTacToe
             return menu.Ask(); // returnerar en StartingPlayerRule
         }
 
-        private IPlayer PlayerStarts(
+        private IPlayer PlayerStarts( // FALL #8, deletaginstanser
             int round, IPlayer human, IPlayer computer)
         {
             return human;
         }
 
-        private IPlayer ComputerStarts(
+        private IPlayer ComputerStarts( // FALL #8, deletaginstanser
             int round, IPlayer human, IPlayer computer)
         {
             return computer;
         }
 
-        private IPlayer TakeTurns(
+        private IPlayer TakeTurns( // FALL #8, delegatinstanser
             int round, IPlayer human, IPlayer computer)
         {
             if (round % 2 == 1)

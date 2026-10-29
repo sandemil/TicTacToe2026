@@ -6,11 +6,11 @@ namespace TicTacToe
     {
         public IPlayer Human { get; }
         public IPlayer Computer { get; }
-        public IGameMode Mode { get; }
-        public IBoardStyle Style { get; }
+        public IGameMode Mode { get; } // FALL #4
+        public IBoardStyle Style { get; } // FALL #5
         public GameHistory<MatchResult> Results { get; }
         public string Difficulty { get; }
-        public StartingPlayerRule StartingPlayer { get; }
+        public StartingPlayerRule StartingPlayer { get; } // FALL #8
 
         public MatchSettings(
             IPlayer human,

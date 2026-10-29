@@ -15,7 +15,7 @@ namespace TicTacToe
 
         public string Play()
         {
-            Board board = new Board();
+            Board board = new Board(); // FALL #%
             TurnOrder turns = new TurnOrder(settings, number);
             GameStatus referee = new GameStatus(settings);
 
