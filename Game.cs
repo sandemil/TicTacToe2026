@@ -62,7 +62,7 @@ namespace TicTacToe
                 new Menu<IBoardStyle>("Choose board style:");
             menu.Add("Numbered", new NumberedBoard());
             menu.Add("Minimal", new MinimalBoard());
-            return menu.Ask();
+            return menu.Ask(); // returnerar en IBoardStyle
         }
 
         private IGameMode AskGameMode()
@@ -70,7 +70,7 @@ namespace TicTacToe
             Menu<IGameMode> menu = new Menu<IGameMode>("Choose game mode:");
             menu.Add("Classic", new ClassicGameMode());
             menu.Add("Reverse", new ReverseGameMode());
-            return menu.Ask();
+            return menu.Ask(); // returnerar en IGameMode
         }
 
         private IAiStrategy AskStrategy()
@@ -80,7 +80,7 @@ namespace TicTacToe
             menu.Add("Easy", new EasyAiStrategy());
             menu.Add("Medium", new MediumAiStrategy());
             menu.Add("Hard", new HardAiStrategy());
-            return menu.Ask();
+            return menu.Ask(); // returnerar en IAiStrategy
         }
 
         private StartingPlayerRule AskStartingRule()
@@ -90,7 +90,7 @@ namespace TicTacToe
             menu.Add("Player always starts", PlayerStarts);
             menu.Add("Computer always starts", ComputerStarts);
             menu.Add("Take turns", TakeTurns);
-            return menu.Ask();
+            return menu.Ask(); // returnerar en StartingPlayerRule
         }
 
         private IPlayer PlayerStarts(

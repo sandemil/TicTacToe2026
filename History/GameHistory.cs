@@ -1,6 +1,6 @@
 namespace TicTacToe
 {
-    //          FALL #10:
+    //          FALL #1:
     // VAD:     Generics med constraint.
     // HUR:     GameHistory<T> konstrueras som GameHistory<MatchResult> i Game
     //          och som GameHistory<MoveRecord> i Board. Constrainten

@@ -1,11 +1,11 @@
 namespace TicTacToe
 {
     // Avgör efter varje drag om rundan är vunnen eller oavgjord
-    public class Referee
+    public class GameStatus
     {
         private readonly MatchSettings settings;
 
-        public Referee(MatchSettings settings)
+        public GameStatus(MatchSettings settings)
         {
             this.settings = settings;
         }
@@ -17,12 +17,12 @@ namespace TicTacToe
             //          FALL #4:
             // VAD:     Strategy pattern
             // HUR:     ClassicGameMode och ReverseGameMode injiceras
-            //          som IGameMode via MatchSettings. Referee
+            //          som IGameMode via MatchSettings. GameStatus
             //          anropar GetWinningSymbol() för att avgöra vem
             //          som vann.
             // VARFÖR:  Reglerna för vinst ligger i varsin klass (i
-            //          stället för i if-satser i Referee). Ett nytt
-            //          spelläge kan läggas till utan att Referee
+            //          stället för i if-satser i GameStatus). Ett nytt
+            //          spelläge kan läggas till utan att GameStatus
             //          eller Round ändras.
             char winnerSymbol = settings.Mode.GetWinningSymbol(board);
             if (winnerSymbol != ' ')
