@@ -14,7 +14,8 @@ namespace TicTacToe
         // ska fortsätta
         public string? Judge(Board board)
         {
-            //          FALL #4:
+            //          FALL #4: (GameStatus.cs, IGameMode.cs, ClassicGameMode.cs,
+            //          ReverseGameMode.cs, MatchSettings.cs, Game.cs)
             // VAD:     Strategy pattern
             // HUR:     ClassicGameMode och ReverseGameMode injiceras
             //          som IGameMode via MatchSettings. GameStatus

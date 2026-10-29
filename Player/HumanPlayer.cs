@@ -29,7 +29,8 @@ namespace TicTacToe
 
                 if (input == "s")
                 {
-                //          FALL #7:
+                //          FALL #7 (HumanPlayer.cs, IRestorePoint.cs, FileRestorePoint.cs,
+                //          NoRestorePoint.cs, Game.cs):
                 // VAD:     Strategy pattern
                 // HUR:     FileRestorePoint och NoRestorePoint
                 //          injiceras som IRestorePoint i HumanPlayer.

@@ -17,7 +17,8 @@ namespace TicTacToe
             bool rematch = true;
             while (rematch)
             {
-                //          FALL #9:
+                //          FALL #9 (SessionHost.cs, IMatchFactory.cs, SingleMatchFactory.cs,
+                //          TournamentFactory.cs, SingleMatch.cs, Tournament.cs):
                 // VAD:     Factory Method pattern.
                 // HUR:     SingleMatchFactory och TournamentFactory injiceras
                 //          som IMatchFactory i SessionHost. Create() returnerar

@@ -36,7 +36,8 @@ namespace TicTacToe
 
         public bool IsFinished(ITournamentEndCondition endCondition)
         {
-            //          FALL #6:
+            //          FALL #6 (Scoreboard.cs, ITournamentEndCondition.cs, BestOfX.cs, 
+            //          FirstToX.cs, UntilPlayerQuits.cs, Tournament.cs):
             // VAD:     Strategy pattern
             // HUR:     BestOfX, FirstToX och UntilPlayerQuits
             //          injiceras som ITournamentEndCondition i

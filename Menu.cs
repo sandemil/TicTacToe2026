@@ -1,6 +1,6 @@
 namespace TicTacToe
 {
-    //          FALL #2:
+    //          FALL #2: (Menu.cs och Game.cs)
     // VAD:     Generics
     // HUR:     Menu<T> kopplar varje menytext till ett värde av typen T och
     //          Ask() returnerar värdet som spelaren väljer. Den används till

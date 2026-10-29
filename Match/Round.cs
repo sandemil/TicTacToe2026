@@ -27,7 +27,8 @@ namespace TicTacToe
             while (true)
             {
                 IPlayer current = turns.GetCurrent();
-                //          FALL #3:
+                //          FALL #3 (Round.cs, IPlayer.cs, HumanPlayer.cs, ComputerPlayer.cs, 
+                //          MatchSettings.cs, Game.cs):
                 // VAD:     Strategy pattern
                 // HUR:     HumanPlayer och ComputerPlayer injiceras
                 //          som IPlayer via MatchSettings. Round anropar
@@ -39,7 +40,8 @@ namespace TicTacToe
                 int move = current.ChooseMove(board, settings.Mode);
                 board.Play(move, current.Symbol);
 
-                //          FALL #5:
+                //          FALL #5 (Round.cs, IBoardStyle.cs, NumberedBoard.cs, MinimalBoard.cs, 
+                //          MatchSettings.cs, Game.cs):
                 // VAD:     Strategy pattern
                 // HUR:     NumberedBoard och MinimalBoard injiceras som
                 //          IBoardStyle via MatchSettings. Round anropar

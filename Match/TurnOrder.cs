@@ -9,7 +9,7 @@ namespace TicTacToe
         public TurnOrder(MatchSettings settings, int round)
         {
             this.settings = settings;
-            //          FALL #8:
+            //          FALL #8 (TurnOrder.cs, MatchSettings.cs, StartingPlayerRule.cs Game.cs):
             // VAD:     Delegater och beroendeinjektion
             // HUR:     Game har tre metoder med samma signatur som
             //          delegaten StartingPlayerRule: PlayerStarts,
