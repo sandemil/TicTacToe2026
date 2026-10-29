@@ -17,7 +17,7 @@ namespace TicTacToe
         {
             Board board = new Board();
             TurnOrder turns = new TurnOrder(settings, number);
-            Referee referee = new Referee(settings);
+            GameStatus referee = new GameStatus(settings);
 
             Console.WriteLine();
             Console.WriteLine("You are X. Computer is O.");
